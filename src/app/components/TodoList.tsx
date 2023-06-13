@@ -7,13 +7,14 @@ export default async function TodoList() {
 
   if (!todos) {
     content = <p>No todos available</p>;
+    console.log("what");
   } else {
     const sortedTodos = todos.reverse();
 
     content = (
       <>
         {sortedTodos.map((todo) => (
-          <p className="text-black">{todo.title}</p>
+          <p>{todo.title}</p>
         ))}
       </>
     );

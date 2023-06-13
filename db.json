@@ -29,6 +29,18 @@
       "title": "This is a test 5",
       "completed": true,
       "prioritize": false
+    },
+    {
+      "title": "new todo",
+      "prioritize": false,
+      "completed": false,
+      "id": 6
+    },
+    {
+      "title": "new",
+      "prioritize": false,
+      "completed": false,
+      "id": 7
     }
   ]
 }
