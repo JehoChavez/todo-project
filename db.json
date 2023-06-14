@@ -9,7 +9,7 @@
     {
       "id": 2,
       "title": "This is a test 2",
-      "completed": true,
+      "completed": false,
       "prioritize": false
     },
     {
@@ -27,7 +27,7 @@
     {
       "id": 5,
       "title": "This is a test 5",
-      "completed": true,
+      "completed": false,
       "prioritize": false
     },
     {
