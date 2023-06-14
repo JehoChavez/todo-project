@@ -1,5 +1,7 @@
 import fetchTodos from "@/lib/fetchTodos";
 
+import TodoItem from "./TodoItem";
+
 export default async function TodoList() {
   const todos = await fetchTodos();
 
@@ -12,11 +14,11 @@ export default async function TodoList() {
     const sortedTodos = todos.reverse();
 
     content = (
-      <>
+      <ul>
         {sortedTodos.map((todo) => (
-          <p>{todo.title}</p>
+          <TodoItem todo={todo} />
         ))}
-      </>
+      </ul>
     );
   }
 
