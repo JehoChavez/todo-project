@@ -1,14 +1,51 @@
+"use client";
+
+import { useState, experimental_useOptimistic as useOptimistic } from "react";
+import { experimental_useFormStatus as useFormStatus } from "react-dom";
+import updateTodo from "@/lib/updateTodo";
+
 import Checkbox from "./Checkbox";
+import EditForm from "./EditForm";
 
 const TodoItem = ({ todo }: { todo: Todo }) => {
-  console.log(todo);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
 
-  return (
-    <li key={todo.id}>
-      <h3>{todo.title}</h3>
-      <Checkbox todo={todo} />
-    </li>
+  const enableEditingHandler = () => {
+    setIsEditing((prevState: boolean) => !prevState);
+  };
+
+  const [optimisticTodo, addOptimisticTodo] = useOptimistic(
+    todo,
+    (state: Todo, title: string) => ({ ...state, title })
   );
+
+  const formSubmissionHandler = async (
+    toUpdateTodo: Todo,
+    updatedTitle: string
+  ) => {
+    addOptimisticTodo(updatedTitle);
+
+    await updateTodo(toUpdateTodo, updatedTitle);
+
+    setIsEditing(false);
+  };
+
+  let content = (
+    <>
+      <h3 onClick={enableEditingHandler}>{optimisticTodo.title}</h3>
+      <Checkbox todo={todo} />
+    </>
+  );
+
+  if (isEditing) {
+    content = (
+      <EditForm todo={optimisticTodo} onSubmit={formSubmissionHandler} />
+    );
+  }
+
+  return <li key={todo.id}>{content}</li>;
 };
 
 export default TodoItem;
+
+//im not sure if the optimistic thing is working well
