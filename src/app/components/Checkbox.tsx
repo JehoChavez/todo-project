@@ -13,17 +13,19 @@ const Checkbox = ({ todo }: { todo: Todo }) => {
   const { pending } = useFormStatus();
 
   return (
-    <input
-      type="checkbox"
-      checked={optimisticTodo.completed}
-      name="completed"
-      id="completed"
-      onChange={async () => {
-        addOptimisticTodo(!todo.completed);
-        await markTodo(todo);
-      }}
-      disabled={pending}
-    />
+    <>
+      <input
+        type="checkbox"
+        checked={optimisticTodo.completed}
+        name="completed"
+        id="completed"
+        onChange={async () => {
+          addOptimisticTodo(!todo.completed);
+          await markTodo(todo);
+        }}
+        disabled={pending}
+      />
+    </>
   );
 };
 

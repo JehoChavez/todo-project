@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, experimental_useOptimistic as useOptimistic } from "react";
-import { experimental_useFormStatus as useFormStatus } from "react-dom";
 import updateTodo from "@/lib/updateTodo";
 
 import Checkbox from "./Checkbox";
@@ -47,5 +46,3 @@ const TodoItem = ({ todo }: { todo: Todo }) => {
 };
 
 export default TodoItem;
-
-//im not sure if the optimistic thing is working well

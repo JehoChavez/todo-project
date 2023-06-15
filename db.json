@@ -33,17 +33,17 @@
     {
       "title": "new 1",
       "prioritize": false,
-      "completed": false,
+      "completed": true,
       "id": 6
     },
     {
-      "title": "new 2",
+      "title": "new 2 again",
       "prioritize": false,
       "completed": false,
       "id": 7
     },
     {
-      "title": "testing",
+      "title": "is this working",
       "prioritize": false,
       "completed": false,
       "id": 8
