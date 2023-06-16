@@ -37,15 +37,15 @@
       "id": 6
     },
     {
-      "title": "new 2 again",
+      "title": "new 2?",
       "prioritize": false,
       "completed": false,
       "id": 7
     },
     {
-      "title": "is this working",
+      "title": "well",
       "prioritize": false,
-      "completed": false,
+      "completed": true,
       "id": 8
     }
   ]

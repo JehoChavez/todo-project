@@ -1,44 +1,59 @@
 "use client";
 
-import { useState, experimental_useOptimistic as useOptimistic } from "react";
-import updateTodo from "@/lib/updateTodo";
+import {
+  useState,
+  experimental_useOptimistic as useOptimistic,
+  ChangeEvent,
+} from "react";
 
+import updateTodo from "@/lib/updateTodo";
 import Checkbox from "./Checkbox";
-import EditForm from "./EditForm";
 
 const TodoItem = ({ todo }: { todo: Todo }) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
-  const enableEditingHandler = () => {
-    setIsEditing((prevState: boolean) => !prevState);
-  };
-
   const [optimisticTodo, addOptimisticTodo] = useOptimistic(
-    todo,
-    (state: Todo, title: string) => ({ ...state, title })
+    { todo, sending: false },
+    (state, newTodoTitle) => ({
+      ...state,
+      title: newTodoTitle,
+      sending: true,
+    })
   );
 
-  const formSubmissionHandler = async (
-    toUpdateTodo: Todo,
-    updatedTitle: string
-  ) => {
-    addOptimisticTodo(updatedTitle);
+  const [title, setTitle] = useState<string>(optimisticTodo.todo.title);
 
-    await updateTodo(toUpdateTodo, updatedTitle);
+  const enableEditingHandler = () => {
+    setIsEditing(true);
+  };
+
+  const formAction = async () => {
+    addOptimisticTodo(title);
+
+    await updateTodo(todo, title);
 
     setIsEditing(false);
   };
 
+  const inputChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
+  };
+
   let content = (
     <>
-      <h3 onClick={enableEditingHandler}>{optimisticTodo.title}</h3>
+      <h3 onClick={enableEditingHandler}>
+        {optimisticTodo.sending ? "Updating..." : optimisticTodo.todo.title}
+      </h3>
       <Checkbox todo={todo} />
     </>
   );
 
   if (isEditing) {
     content = (
-      <EditForm todo={optimisticTodo} onSubmit={formSubmissionHandler} />
+      <form action={formAction}>
+        <input type="text" value={title} onChange={inputChangeHandler} />
+        <button>Save</button>
+      </form>
     );
   }
 

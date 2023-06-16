@@ -14,7 +14,7 @@ const updateTodo = async (todo: Todo, updatedTitle: string) => {
   });
 
   if (!res.ok) {
-    console.log("Failed to add new todo");
+    console.log("Failed update todo");
   }
 
   revalidatePath("/");
