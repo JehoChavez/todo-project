@@ -23,18 +23,6 @@
       "title": "This is a test 5",
       "completed": false,
       "prioritize": false
-    },
-    {
-      "title": "new 1",
-      "prioritize": false,
-      "completed": true,
-      "id": 6
-    },
-    {
-      "title": "new 2?",
-      "prioritize": false,
-      "completed": false,
-      "id": 7
     }
   ]
 }

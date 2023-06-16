@@ -7,9 +7,8 @@ export default async function TodoList() {
 
   let content;
 
-  if (!todos) {
+  if (!todos || todos.length === 0) {
     content = <p>No todos available</p>;
-    console.log("what");
   } else {
     const sortedTodos = todos.reverse();
 
