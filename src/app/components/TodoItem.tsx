@@ -7,6 +7,8 @@ import {
 } from "react";
 
 import updateTodo from "@/lib/updateTodo";
+import deleteTodo from "@/lib/deleteTodo";
+
 import Checkbox from "./Checkbox";
 
 const TodoItem = ({ todo }: { todo: Todo }) => {
@@ -39,6 +41,16 @@ const TodoItem = ({ todo }: { todo: Todo }) => {
     setTitle(e.target.value);
   };
 
+  const cancelHandler = () => {
+    setIsEditing(false);
+  };
+
+  const deleteHandler = () => {
+    deleteTodo(todo.id);
+
+    setIsEditing(false);
+  }
+
   let content = (
     <>
       <h3 onClick={enableEditingHandler}>
@@ -52,7 +64,13 @@ const TodoItem = ({ todo }: { todo: Todo }) => {
     content = (
       <form action={formAction}>
         <input type="text" value={title} onChange={inputChangeHandler} />
-        <button>Save</button>
+        <div>
+          <button type="submit">Save</button>
+          <button onClick={cancelHandler}>Cancel</button>
+        </div>
+        <div>
+          <button onClick={deleteHandler}>Delete Todo</button>
+        </div>
       </form>
     );
   }

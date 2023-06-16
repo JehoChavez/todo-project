@@ -1,12 +1,6 @@
 {
   "todos": [
     {
-      "id": 1,
-      "title": "This is a test 1",
-      "completed": false,
-      "prioritize": false
-    },
-    {
       "id": 2,
       "title": "This is a test 2",
       "completed": false,
@@ -41,12 +35,6 @@
       "prioritize": false,
       "completed": false,
       "id": 7
-    },
-    {
-      "title": "well",
-      "prioritize": false,
-      "completed": true,
-      "id": 8
     }
   ]
 }
