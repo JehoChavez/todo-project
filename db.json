@@ -3,7 +3,7 @@
     {
       "id": 2,
       "title": "This is a test 2",
-      "completed": false,
+      "completed": true,
       "prioritize": false
     },
     {
@@ -15,14 +15,14 @@
     {
       "id": 4,
       "title": "This is a test 4",
-      "completed": false,
+      "completed": true,
       "prioritize": true
     },
     {
-      "id": 5,
       "title": "This is a test 5",
+      "prioritize": false,
       "completed": false,
-      "prioritize": false
+      "id": 5
     }
   ]
 }
